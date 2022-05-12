@@ -1,0 +1,15 @@
+.swiper {
+    max-height: 700px;
+    &-slide{
+        text-align: center;
+        & img{
+            height: 100%;
+            max-width: $maxWidthContainer+px;
+            object-fit: contain;
+        }
+    }
+}
+.main-slider{
+    padding: 0;
+    margin-top: 15px;
+}

@@ -1,0 +1,45 @@
+.spring{
+    padding-top: 12px;
+    &__block{
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        gap: 15px;
+        justify-content: space-between;
+        &:not(:last-child){
+            margin-bottom: 15px;
+        }
+    }
+    &__image{
+        max-width: 400px;
+        height: auto;
+        flex: 1 1 auto;
+    }
+    &__desc{
+        flex: 0 1 700px;
+        & > p{
+            margin-bottom: 20px;
+        }
+    }
+    &__subtitle{
+        text-align-last: left;
+    }
+    &__list{
+        margin-top: 20px;
+        & > li{
+            margin-left: 20px;
+            list-style:disc;
+        }
+    }
+}
+@media (max-width: 1144px) {
+    .spring{
+        &__image{
+            margin: 0 auto;
+        }
+        &__desc{
+            flex-basis: 100%;
+        }
+    }
+}

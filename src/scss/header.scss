@@ -1,0 +1,122 @@
+.header{
+    width: 100%;
+    position: sticky;
+    z-index: 1000000;
+    padding: 0 10px;
+    top: 0; 
+    background: $headerColor;
+    &__container{
+        display: flex;
+        align-items: center;
+        min-height: 100px;
+        justify-content: space-between;
+    }
+    &__logo{
+        display: block;
+        flex: 0 0 191px;
+        height: auto;
+    }
+    &__nav{
+        max-width: 60%;
+    }
+    &__list{
+        gap: 15px;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__link{
+        @media (hover:hover) {
+            transition: .3s all ease;
+            position: relative;
+            &::after{
+                position: absolute;
+                width: 100%;
+                transition: .3s opacity ease;
+                content: "";
+                display: block;
+                height: 3px;
+                top: 30px;
+                background: $hoverLinkColor;
+                opacity: 0;
+
+            }
+            &:hover{
+                color: $hoverLinkColor;
+                &::after{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+.burger{
+    display: none;
+}
+@media (max-width:896px) {
+    .header{
+        &__nav{
+            position: fixed;
+            display: block;
+            min-width: 100%;
+            overflow: auto;
+            top: 100px;
+            padding-bottom: 100px;
+            background: $headerColor;
+            height: 100%;
+            left: -100%;
+            transition: .3s left ease;
+            &._active{
+                left: 0;
+            }
+        }
+        &__list{
+            flex-direction: column;
+            font-size: 30px;
+            overflow: auto;
+            padding-bottom: 100px;
+        }
+        &__item{
+            &:not(:last-child){
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .burger{
+        display: block;
+        height: 35px;
+        width: 60px;
+        position: relative;
+        &::before,&:after{
+            content: "";
+        }
+        &::before, &::after, &-body{
+            width: 100%;
+            height: 5px;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            background: #000;
+            transition: .3s transform ease;
+        }
+        &-body{
+            top: 15px;
+            &._active{
+                transform: scale(0);
+            }
+        }
+        &:after{
+            top: 30px;
+            
+        }
+        &._active{
+            &::before{
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+            &::after{
+                transform: rotate(-45deg) translate(10px, -10px);
+            }
+        }
+    }
+}
