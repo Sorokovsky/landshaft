@@ -1,9 +1,7 @@
 export const server = (done) => {
     app.plugins.browsersync.init({
-        server: {
-            baseDir: `${app.path.build.html}`
-        },
-        notify: false,
-        proxy: 'landshaft.loc'
-    });
+        proxy: 'http://landshaft.loc',
+        port: 3000,
+    }); 
+    done();
 }
