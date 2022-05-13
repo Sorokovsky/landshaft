@@ -11,6 +11,6 @@
     require('./blocks/prepare.php'); 
     ?>     
     </main>
-    <script src='js/script.min.js?_v=20220512185726'></script>
+    <script src='js/script.min.js?_v=20220513191143'></script>
 </body>
 </html>

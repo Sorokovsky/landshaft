@@ -1,27 +1,6 @@
 <?php
-    class Admin{
-        public $username = "Nelia";
-        public $password = "Nelia5007001";
-        public $is_logined;
-        public function login($username, $password){
-            if($username == $this->username AND $username == $this->username){
-                $this->is_logined = true;
-            }else{
-                $this->is_logined = false;
-            }
-        }
-        public function change_admin($username=$this->username, $password=$this->password){
-            if($this->is_logined){
-                $this->username = $username;
-                $this->password = $password;
-                return 'Admin was changed';
-            }else{
-                return "Admin was not changed";
-            }
-        }
-    }
-    $admin = new Admin();
-    ?>
+include('./scripts/classes.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +10,21 @@
     <title>Admin panel</title>
 </head>
 <body>
-    
+    <div id="admin">
+    <?php
+    if(!$admin->is_logined){?>
+        <div class="admin__auth">
+            <form action="admin.php" method="GET" class="admin__form">
+                <input type="text" id="username" class="admin__input" placeholder="Ligin:" />
+                <input type="text" id="password" class="admin__input" placeholder="Password: "/>
+                <button type="submit" class="admin__btn">Login</button>
+            </form>
+        </div>
+    <?php }else{ ?>
+        <span>Logined</span>
+        <button class="logout"></button>
+    <?php }?>
+    </div>
+    <script src="./js/script.min.js"></script>
 </body>
 </html>
