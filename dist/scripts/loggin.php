@@ -1,8 +1,5 @@
 <?php
-require_once('./classes.php');
-    $name = $_GET['name'];
-    $password = $_GET['password'];
-    $admin->login($name, $password);
+    require_once('./classes.php');
     $name = $_GET['name'];
     $password = $_GET['password'];
     $data = $admin->login($name, $password);

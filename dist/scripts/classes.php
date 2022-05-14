@@ -3,7 +3,7 @@ session_start();
 class Admin{
    public $username = 'Sorokovsky';
    public $password = 'sorokov20041784';
-   public $is_logined = false;
+   public $is_logined;
    public function __construct(){
        $this->is_logined = isset($_SESSION['Admin']);
    }
@@ -13,11 +13,13 @@ class Admin{
        }else{
            unset($_SESSION["Admin"]);
        }
-       $this->is_login = isset($_SESSION['Admin']);
+       $this->is_logined = isset($_SESSION['Admin']);
        return $this->is_logined;
    }
    public function logout() {
        unset($_SESSION["Admin"]);
+       $this->is_logined = isset($_SESSION['Admin']);
+       return $this->is_logined;
    }
 }
 $admin = new Admin();

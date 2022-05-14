@@ -1,6 +1,4 @@
-<?php
-include('./scripts/classes.php');
-?>
+<?php include('./scripts/classes.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +12,7 @@ include('./scripts/classes.php');
     <?php
     if(!$admin->is_logined){?>
         <div class="admin__auth">
-            <form action="admin.php" method="GET" class="admin__form">
+            <form action="./" method="GET" class="admin__form">
                 <input type="text" id="username" class="admin__input" placeholder="Ligin:" />
                 <input type="text" id="password" class="admin__input" placeholder="Password: "/>
                 <button type="submit" class="admin__btn">Login</button>
@@ -22,9 +20,9 @@ include('./scripts/classes.php');
         </div>
     <?php }else{ ?>
         <span>Logined</span>
-        <button class="logout"></button>
+        <a href='#' type="button" class="logout">logout</a>
     <?php }?>
     </div>
-    <script src="./js/script.min.js?_v=20220513191143"></script>
+    <script src="js/script.min.js?_v=20220514200602"></script>
 </body>
 </html>

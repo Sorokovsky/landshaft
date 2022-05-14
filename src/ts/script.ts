@@ -1,4 +1,5 @@
 import { isWebp, mobileMenu } from "./modules/functions.js";
+import { adminForm } from './modules/variables.js';
 import Swiper, { Navigation, Pagination } from "swiper";
 try {
     isWebp();
@@ -34,27 +35,36 @@ try {
 } catch (error) {
     console.log(error);
 }
-try {
-    let adminForm:HTMLFormElement = document.querySelector('.admin__form')!; 
-    adminForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const nameinput:any = adminForm.children[0];
-        const passwordinput:any = adminForm.children[1];
-        const data = {
-            name: nameinput.value,
-            password: passwordinput.value
+if (location.pathname == "/admin.php") {
+    try {
+        adminForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const nameElement:any = adminForm.children[0]!;
+            const passwordElement:any = adminForm.children[1]!;
+            const query = {
+                name: nameElement.value,
+                password: passwordElement.value
+            }
+            const response = await fetch(`../scripts/loggin.php?name=${query.name}&password=${query.password}`, {method: "GET"});
+            const result = await response.json();
+            if(response.ok){
+                location.reload();
+            }
+        };
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        const logout:HTMLBodyElement = document.querySelector(".logout")!;
+        logout.onclick = async (e) => {
+            console.log("logout");
+            
+            e.preventDefault();
+            const response = await fetch('../scripts/logout.php', {method: "GET"});
+            location.reload();
         }
-        const response = await fetch(`../scripts/admin.php?name=${data.name}&password=${data.password}`, {
-            method: "GET",
-            redirect: "follow",
-        });
-        console.log(response);
-        let text = await response.text();
-        let result =  JSON.parse(text);
-        console.log(result);
-        location.href = location.href;
+    } catch (error) {
+        console.log(error);
         
-    });
-} catch (error) {
-    console.log(error);
+    }
 }
