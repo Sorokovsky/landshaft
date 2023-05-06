@@ -1,3 +1,4 @@
-import { isWebp, registerServiceWarker } from "./modules/functions.js";
+import { isWebp, registerServiceWarker, smoothScrolling } from "./modules/functions.js";
 registerServiceWarker();
+smoothScrolling();
 isWebp();

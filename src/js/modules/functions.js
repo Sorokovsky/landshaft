@@ -87,3 +87,12 @@ export async function registerServiceWarker() {
         const response = await navigator.serviceWorker.register('../sw.js');
     }
 }
+export function smoothScrolling() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        const href = link.href;
+        if (href.indexOf('#') >= 0) {
+            const blockName = href.split("#")[1];
+        }
+    });
+}
