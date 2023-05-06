@@ -1,3 +1,10 @@
+- 
+    let menuItems = [
+        {
+            name: "Головна",
+            href: "/"
+        }
+    ];
 mixin head(title, descripton='Ландшафтний дизайн майстер + це найкраща компанія у Хмельницькому для облаштування газоніу', keywords="Хмельницький, Ландшафт, майстер+, газон, благоустрій, посадка газону")
     head
         meta(charset="UTF-8")
@@ -8,3 +15,8 @@ mixin head(title, descripton='Ландшафтний дизайн майстер
         link(rel="stylesheet", href="css/style.min.css")
         link(rel="manifest", href="./manifest.json")
         title=title 
+mixin menu(items)
+    ul 
+        for item in items 
+            li 
+                a(href=item.href)=item.name

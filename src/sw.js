@@ -7,7 +7,6 @@ self.addEventListener('activate', onActivatingWorker);
 async function onInstallingWorker(event) {
     try{
         const caches = await self.caches.open(cacheStaticName);
-        console.log(filesForCache);
         await caches.addAll(filesForCache);
     }catch(err){
         console.log(err.message);

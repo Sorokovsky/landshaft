@@ -1,1 +1,7 @@
+
 header(class="header")
+    .container.header__container 
+        a(href="/").logo 
+            img(src="@img/icons/logo.png", alt="")
+        nav.header__menu
+            +menu(menuItems)
