@@ -15,3 +15,20 @@
         align-items: center
         justify-content: space-between
         gap: 15rem
+    .header__menu
+        ul > li > a
+            font-size: 18rem
+            position: relative
+            &::after
+                content: ""
+                display: block
+                width: 0
+                height: 2rem
+                background: #000
+                position: absolute
+                left: 0
+                bottom: -5rem
+                transition: .3s all ease
+            &:hover::after
+                width: 100%
+                
