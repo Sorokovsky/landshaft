@@ -87,12 +87,27 @@ export async function registerServiceWarker() {
         const response = await navigator.serviceWorker.register('../sw.js');
     }
 }
+export function scrollTo(e) {
+    e.preventDefault();
+    const target = e.target;
+    const block = document.querySelector(target.href);
+    if (block) {
+        while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)) {
+            if (window.scrollY <= block.scrollTop) {
+                window.scrollTo({ top: window.scrollY + 50 });
+            }
+            else {
+                window.scrollTo({ top: window.scrollY - 50 });
+            }
+        }
+    }
+}
 export function smoothScrolling() {
     const links = document.querySelectorAll('a');
     links.forEach(link => {
-        const href = link.href;
+        const { href } = link;
         if (href.indexOf('#') >= 0) {
-            const blockName = href.split("#")[1];
+            link.addEventListener('click', scrollTo);
         }
     });
 }
