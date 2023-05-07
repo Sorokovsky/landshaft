@@ -92,22 +92,22 @@ export async function registerServiceWarker():Promise<void>{
         const response = await navigator.serviceWorker.register('../sw.js');
     }
 }
-export function scrollTo(e:MouseEvent){
-    e.preventDefault();
-    const target = e.target as HTMLAnchorElement;
-    const block = document.querySelector(`#${target.href.split("#")[1]}`) as Element;
-    if (block) {
-        while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)){
-            if (window.scrollY <= block.scrollTop){
-                window.scrollTo({top: window.scrollY + 50});
-            }else{
-                window.scrollTo({top: window.scrollY - 50});
-            }
-        }
-        window.scrollTo({top: block.scrollTop});
-    }
-}
 export function smoothScrolling(){
+    function scrollTo(e:MouseEvent){
+        e.preventDefault();
+        const target = e.target as HTMLAnchorElement;
+        const block = document.querySelector(`#${target.href.split("#")[1]}`) as Element;
+        if (block) {
+            while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)){
+                if (window.scrollY <= block.scrollTop){
+                    window.scrollTo({top: window.scrollY + 50});
+                }else{
+                    window.scrollTo({top: window.scrollY - 50});
+                }
+            }
+            window.scrollTo({top: block.scrollTop});
+        }
+    }
     const links = document.querySelectorAll('a');
     links.forEach(link => {
         const { href } = link;

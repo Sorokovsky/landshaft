@@ -6,7 +6,8 @@
   "type": "module",
   "dependencies": {
     "concurrently": "^7.1.0",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "swiper": "^9.2.4"
   },
   "devDependencies": {
     "browser-sync": "^2.27.7",

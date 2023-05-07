@@ -87,23 +87,23 @@ export async function registerServiceWarker() {
         const response = await navigator.serviceWorker.register('../sw.js');
     }
 }
-export function scrollTo(e) {
-    e.preventDefault();
-    const target = e.target;
-    const block = document.querySelector(`#${target.href.split("#")[1]}`);
-    if (block) {
-        while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)) {
-            if (window.scrollY <= block.scrollTop) {
-                window.scrollTo({ top: window.scrollY + 50 });
-            }
-            else {
-                window.scrollTo({ top: window.scrollY - 50 });
-            }
-        }
-        window.scrollTo({ top: block.scrollTop });
-    }
-}
 export function smoothScrolling() {
+    function scrollTo(e) {
+        e.preventDefault();
+        const target = e.target;
+        const block = document.querySelector(`#${target.href.split("#")[1]}`);
+        if (block) {
+            while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)) {
+                if (window.scrollY <= block.scrollTop) {
+                    window.scrollTo({ top: window.scrollY + 50 });
+                }
+                else {
+                    window.scrollTo({ top: window.scrollY - 50 });
+                }
+            }
+            window.scrollTo({ top: block.scrollTop });
+        }
+    }
     const links = document.querySelectorAll('a');
     links.forEach(link => {
         const { href } = link;
