@@ -90,7 +90,7 @@ export async function registerServiceWarker() {
 export function scrollTo(e) {
     e.preventDefault();
     const target = e.target;
-    const block = document.querySelector(target.href);
+    const block = document.querySelector(`#${target.href.split("#")[1]}`);
     if (block) {
         while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)) {
             if (window.scrollY <= block.scrollTop) {
@@ -100,6 +100,7 @@ export function scrollTo(e) {
                 window.scrollTo({ top: window.scrollY - 50 });
             }
         }
+        window.scrollTo({ top: block.scrollTop });
     }
 }
 export function smoothScrolling() {

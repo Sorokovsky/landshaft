@@ -95,7 +95,7 @@ export async function registerServiceWarker():Promise<void>{
 export function scrollTo(e:MouseEvent){
     e.preventDefault();
     const target = e.target as HTMLAnchorElement;
-    const block = document.querySelector(target.href) as Element;
+    const block = document.querySelector(`#${target.href.split("#")[1]}`) as Element;
     if (block) {
         while ((window.scrollY - block.scrollTop <= 50) && (window.scrollY - block.scrollTop >= -50)){
             if (window.scrollY <= block.scrollTop){
@@ -104,6 +104,7 @@ export function scrollTo(e:MouseEvent){
                 window.scrollTo({top: window.scrollY - 50});
             }
         }
+        window.scrollTo({top: block.scrollTop});
     }
 }
 export function smoothScrolling(){
